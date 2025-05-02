@@ -1,0 +1,48 @@
+# Source files
+script/**/*.ts
+test/
+
+# Development configs
+.eslintrc.js
+.prettierrc
+tsconfig.json
+jest.config.js
+
+# Git and GitHub
+.git/
+.github/
+.gitignore
+
+# IDE settings
+.vscode/
+.idea/
+
+# Logs and temp files
+*.log
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Test files
+__tests__/
+*.test.ts
+*.spec.ts
+
+# Documentation and examples
+docs/
+examples/
+README.md.backup*
+README.md.original
+
+# Build artifacts
+coverage/
+.nyc_output/
+
+# Development dependencies
+node_modules/
+
+# Misc
+.env
+.env.*
+*.tgz
