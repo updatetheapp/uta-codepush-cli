@@ -30,7 +30,29 @@ export function showHelp(showRootDescription?: boolean): void {
       console.log("UTA (Update The App) - https://updatetheapp.com");
       console.log("A fork of Microsoft's Code Push CLI (https://github.com/microsoft/code-push-server)");
       console.log("");
-      console.log("UTA enables you to deploy mobile app updates directly to your users' devices.\n");
+      console.log(chalk.yellow("IMPORTANT: Authentication requires an API key"));
+      console.log("To use this CLI, you must first generate an API key from:");
+      console.log(chalk.cyan("https://updatetheapp.com/dashboard/settings/api-keys"));
+      console.log("");
+      console.log("Getting Started:");
+      console.log("----------------------------------------");
+      console.log("1. Generate API Key:");
+      console.log("   Visit the UTA dashboard and generate an API key from the settings page");
+      console.log("");
+      console.log("2. Authentication Commands:");
+      console.log("   - uta login --accessKey <KEY>     # Login using your API key");
+      console.log("   - uta whoami                      # Verify your authentication status");
+      console.log("");
+      console.log("3. Deployment Commands:");
+      console.log("   - uta release-react <appName> <platform> [options]");
+      console.log("     Options:");
+      console.log("     --deploymentName, -d  # Deployment to release to (default: \"Staging\")");
+      console.log("     --description, -des   # Description of the changes");
+      console.log("     --mandatory, -m       # Mark release as mandatory");
+      console.log("     --targetBinaryVersion, -t # Target binary version(s)");
+      console.log("");
+      console.log(chalk.yellow("Note: Browser-based authentication is not supported."));
+      console.log("      All authentication must be done using an API key.\n");
     }
 
     yargs.showHelp();
@@ -338,28 +360,28 @@ yargs
 
     addCommonConfiguration(yargs);
   })
-  .command("collaborator", "View and manage app collaborators", (yargs: yargs.Argv) => {
-    isValidCommandCategory = true;
-    yargs
-      .usage(USAGE_PREFIX + " collaborator <command>")
-      .demand(/*count*/ 2, /*max*/ 2) // Require exactly two non-option arguments.
-      .command("add", "Add a new collaborator to an app", (yargs: yargs.Argv): void => {
-        isValidCommand = true;
-        yargs
-          .usage(USAGE_PREFIX + " collaborator add <appName> <email>")
-          .demand(/*count*/ 2, /*max*/ 2) // Require exactly two non-option arguments
-          .example("collaborator add MyApp foo@bar.com", 'Adds foo@bar.com as a collaborator to app "MyApp"');
+  // .command("collaborator", "View and manage app collaborators", (yargs: yargs.Argv) => {
+  //   isValidCommandCategory = true;
+  //   yargs
+  //     .usage(USAGE_PREFIX + " collaborator <command>")
+  //     .demand(/*count*/ 2, /*max*/ 2) // Require exactly two non-option arguments.
+  //     .command("add", "Add a new collaborator to an app", (yargs: yargs.Argv): void => {
+  //       isValidCommand = true;
+  //       yargs
+  //         .usage(USAGE_PREFIX + " collaborator add <appName> <email>")
+  //         .demand(/*count*/ 2, /*max*/ 2) // Require exactly two non-option arguments
+  //         .example("collaborator add MyApp foo@bar.com", 'Adds foo@bar.com as a collaborator to app "MyApp"');
 
-        addCommonConfiguration(yargs);
-      })
-      .command("remove", "Remove a collaborator from an app", (yargs: yargs.Argv) => removeCollaborator("remove", yargs))
-      .command("rm", "Remove a collaborator from an app", (yargs: yargs.Argv) => removeCollaborator("rm", yargs))
-      .command("list", "List the collaborators for an app", (yargs: yargs.Argv) => listCollaborators("list", yargs))
-      .command("ls", "List the collaborators for an app", (yargs: yargs.Argv) => listCollaborators("ls", yargs))
-      .check((argv: any, aliases: { [aliases: string]: string }): any => isValidCommand); // Report unrecognized, non-hyphenated command category.
+  //       addCommonConfiguration(yargs);
+  //     })
+  //     .command("remove", "Remove a collaborator from an app", (yargs: yargs.Argv) => removeCollaborator("remove", yargs))
+  //     .command("rm", "Remove a collaborator from an app", (yargs: yargs.Argv) => removeCollaborator("rm", yargs))
+  //     .command("list", "List the collaborators for an app", (yargs: yargs.Argv) => listCollaborators("list", yargs))
+  //     .command("ls", "List the collaborators for an app", (yargs: yargs.Argv) => listCollaborators("ls", yargs))
+  //     .check((argv: any, aliases: { [aliases: string]: string }): any => isValidCommand); // Report unrecognized, non-hyphenated command category.
 
-    addCommonConfiguration(yargs);
-  })
+  //   addCommonConfiguration(yargs);
+  // })
   .command("debug", "View the CodePush debug logs for a running app", (yargs: yargs.Argv) => {
     isValidCommandCategory = true;
     isValidCommand = true;
