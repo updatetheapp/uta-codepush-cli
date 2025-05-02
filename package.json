@@ -1,5 +1,5 @@
 {
-  "name": "uta-codepush-cli",
+  "name": "@updatetheapp/uta-codepush-cli",
   "version": "0.0.1",
   "description": "React Native OTA update deployment CLI - forked from Microsoft/code-push-cli for UpdateTheApp.com",
   "main": "./script/cli.js",

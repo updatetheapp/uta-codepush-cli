@@ -5,24 +5,26 @@ A fork of Microsoft's CodePush CLI, customized for UpdateTheApp.com service to e
 ## Installation
 
 ```shell
-npm install -g uta-codepush-cli
+npm install -g @updatetheapp/uta-codepush-cli
 ```
 
 ## Getting Started
 
 1. Generate an API key from [UpdateTheApp Dashboard](https://updatetheapp.com/dashboard/settings/api-keys)
-
 2. Login using your API key:
+
 ```shell
 uta login --accessKey <KEY>
 ```
 
 3. Verify your authentication:
+
 ```shell
 uta whoami
 ```
 
 4. Deploy updates to your React Native app:
+
 ```shell
 uta release-react <appName> <platform> [--deploymentName <deploymentName>]
 ```
@@ -30,10 +32,12 @@ uta release-react <appName> <platform> [--deploymentName <deploymentName>]
 ## Currently Supported Commands
 
 ### Authentication
+
 - `uta login --accessKey <KEY>` - Authenticate using API key from UpdateTheApp.com
 - `uta whoami` - Display current authentication status
 
 ### App Updates
+
 - `uta release-react <appName> <platform>` - Release a React Native update
   - Options:
     - `--deploymentName <name>` - Deployment to release to (default: "Staging")
@@ -43,7 +47,7 @@ uta release-react <appName> <platform> [--deploymentName <deploymentName>]
 
 ## Original Project
 
-This is a fork of [Microsoft's CodePush CLI](https://github.com/microsoft/code-push-server), licensed under the MIT License.
+This is a fork of [Microsoft&#39;s CodePush CLI](https://github.com/microsoft/code-push-server), licensed under the MIT License.
 
 ## License
 
