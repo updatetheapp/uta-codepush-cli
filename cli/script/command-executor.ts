@@ -1207,14 +1207,20 @@ function patch(command: cli.IPatchCommand): Promise<void> {
 }
 
 export const release = (command: cli.IReleaseCommand): Promise<void> => {
-  if (isBinaryOrZip(command.package)) {
-    throw new Error(
-      "It is unnecessary to package releases in a .zip or binary file. Please specify the direct path to the update content's directory (e.g. /platforms/ios/www) or file (e.g. main.jsbundle)."
-    );
+  console.log("[CLI DEBUG] Entering release function in command-executor.ts", command); // Log function start
+  const appName = command.appName;
+  const deploymentName = command.deploymentName;
+  if (!command.package || !fs.existsSync(command.package)) {
+    throw new Error("A valid update contents path must be specified.");
   }
+  console.log("[CLI DEBUG] Update contents path validation passed:", command.package); // Log after validation
 
-  throwForInvalidSemverRange(command.appStoreVersion);
-  const filePath: string = command.package;
+  if (!isValidVersion(command.appStoreVersion)) {
+    throw new Error("A valid semver-compliant target binary version must be specified.");
+  }
+  console.log("[CLI DEBUG] App store version validation passed:", command.appStoreVersion); // Log after validation
+
+  const filePath = command.package;
   let isSingleFilePackage: boolean = true;
 
   if (fs.lstatSync(filePath).isDirectory()) {
@@ -1244,6 +1250,7 @@ export const release = (command: cli.IReleaseCommand): Promise<void> => {
   return sdk
     .isAuthenticated(true)
     .then((isAuth: boolean): Promise<void> => {
+      console.log("[CLI DEBUG] Preparing to call sdk.release with:", { appName, deploymentName, filePath, appStoreVersion: command.appStoreVersion, updateMetadata }); // Log before sdk.release
       return sdk.release(command.appName, command.deploymentName, filePath, command.appStoreVersion, updateMetadata, uploadProgress);
     })
     .then((): void => {
