@@ -9,7 +9,7 @@ import parseDuration = require("parse-duration");
 
 const packageJson = require("../../package.json");
 const ROLLOUT_PERCENTAGE_REGEX: RegExp = /^(100|[1-9][0-9]|[1-9])%?$/;
-const USAGE_PREFIX = "Usage: code-push-standalone";
+const USAGE_PREFIX = "Usage: uta";
 
 // Command categories are:  access-key, app, release, deployment, deployment-key, login, logout, register
 let isValidCommandCategory = false;
@@ -20,13 +20,17 @@ let wasHelpShown = false;
 export function showHelp(showRootDescription?: boolean): void {
   if (!wasHelpShown) {
     if (showRootDescription) {
-      console.log(chalk.cyan("  _____        __  " + chalk.green("  ___           __ ")));
-      console.log(chalk.cyan(" / ___/__  ___/ /__" + chalk.green(" / _ \\__ _____ / / ")));
-      console.log(chalk.cyan("/ /__/ _ \\/ _  / -_)" + chalk.green(" ___/ // (_-</ _ \\")));
-      console.log(chalk.cyan("\\___/\\___/\\_,_/\\__/" + chalk.green("_/   \\_,_/___/_//_/")) + "    CLI v" + packageJson.version);
-      console.log(chalk.cyan("======================================"));
+      console.log(chalk.blue(" _   _ _____ _____ ") + chalk.green("   ___ _    ___ "));
+      console.log(chalk.blue("| | | |_   _|  _  |") + chalk.green("  / __| |  |_ _|"));
+      console.log(chalk.blue("| | | | | | | |_| |") + chalk.green(" | (__| |__ | | "));
+      console.log(chalk.blue("| |_| | | | |  _  |") + chalk.green("  \\___|____|___|"));
+      console.log(chalk.blue("|_ _ _| | | | | | |") + "    CLI v" + packageJson.version);
+      console.log(chalk.blue("======================================"));
       console.log("");
-      console.log("CodePush is a service that enables you to deploy mobile app updates directly to your users' devices.\n");
+      console.log("UTA (Update The App) - https://updatetheapp.com");
+      console.log("A fork of Microsoft's Code Push CLI (https://github.com/microsoft/code-push-server)");
+      console.log("");
+      console.log("UTA enables you to deploy mobile app updates directly to your users' devices.\n");
     }
 
     yargs.showHelp();
