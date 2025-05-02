@@ -1,7 +1,7 @@
 {
-  "name": "code-push-cli",
+  "name": "uta-codepush-cli",
   "version": "0.0.1",
-  "description": "Management CLI for the CodePush service",
+  "description": "React Native OTA update deployment CLI - forked from Microsoft/code-push-cli for UpdateTheApp.com",
   "main": "./script/cli.js",
   "scripts": {
     "start": "node ./bin/script/cli.js",
@@ -11,11 +11,11 @@
     "lint:fix": "npx eslint ./script/**/*.ts --fix"
   },
   "bin": {
-    "code-push-standalone": "./bin/script/cli.js"
+    "uta": "./bin/script/cli.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/microsoft/code-push-server"
+    "url": "https://github.com/updatetheapp/uta-codepush-cli"
   },
   "author": "Microsoft",
   "dependencies": {
