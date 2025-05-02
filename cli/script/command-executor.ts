@@ -50,7 +50,7 @@ import {
   fileExists
 } from "./utils/file-utils";
 
-const configFilePath: string = path.join(process.env.LOCALAPPDATA || process.env.HOME, ".code-push.config");
+const configFilePath: string = path.join(process.env.LOCALAPPDATA || process.env.HOME, ".uta-codepush.config");
 const emailValidator = require("email-validator");
 const packageJson = require("../../package.json");
 const parseXml = Q.denodeify(require("xml2js").parseString);
