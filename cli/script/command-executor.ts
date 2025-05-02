@@ -58,7 +58,7 @@ import Promise = Q.Promise;
 const properties = require("properties");
 
 const CLI_HEADERS: Headers = {
-  "X-CodePush-CLI-Version": packageJson.version,
+  "X-UTA-CodePush-CLI-Version": packageJson.version,
 };
 
 /** Deprecated */
