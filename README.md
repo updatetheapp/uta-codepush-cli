@@ -1,6 +1,6 @@
 # UTA CodePush CLI
 
-A fork of Microsoft's CodePush CLI, customized for UpdateTheApp.com service to enable React Native over-the-air updates.
+A fork of Microsoft's CodePush CLI, customized for updatetheapp.com service to enable React Native over-the-air updates.
 
 ## Installation
 
